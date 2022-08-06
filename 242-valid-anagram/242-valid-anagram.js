@@ -3,34 +3,26 @@
  * @param {string} t
  * @return {boolean}
  */
-var isAnagram = function(s, t) {
-    const map1 = new Map();
-    const map2 = new Map();
+var isAnagram = function(s, t) {   
+    
+    const alphabet = Array(26).fill(0);
     
     if(s.length!=t.length){
         return false;
     }
-    
     for(var i=0;i<s.length;i++){
-        if(map1.has(s[i])){
-            map1.set(s[i],map1.get(s[i])+1);
-        }else{
-             map1.set(s[i],1);     
-        }
-        
-        if(map2.has(t[i])){
-            map2.set(t[i],map2.get(t[i])+1);
-        }else{
-             map2.set(t[i],1);     
-        }
-       
+        //console.log(" s[i]"+s[i]);
+        alphabet[s[i].charCodeAt()-97]+=1;
+       // console.log(" alphabet[s[i]] "+alphabet[s[i].charCodeAt()-97]);
+        alphabet[t[i].charCodeAt()-97]-=1;
+       // console.log(" alphabet[t[i]] "+alphabet[t[i].charCodeAt()-97]);
     }
-    for(const [key,value] of map1){
-        
-        if(map2.get(key)!=value){
+    
+    for( var i=0;i<26;i++){
+        if(alphabet[i]!=0){
             return false;
         }
     }
-   
+    
     return true;
 };
