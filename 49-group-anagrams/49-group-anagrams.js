@@ -3,7 +3,7 @@
  * @return {string[][]}
  */
 var groupAnagrams = function(strs) {
-    const map1= new Map();
+ const map1= new Map();
     if(strs.length==0){
         return [[""]];
     }else if(strs.length==1){
