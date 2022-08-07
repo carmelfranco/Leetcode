@@ -11,13 +11,8 @@ var groupAnagrams = function(strs) {
     }
     
     for(var i=0;i<strs.length;i++){
-        const alphabet = Array(26).fill(0);
-        //for(var j=0;j<strs[i].length;j++){
-        //    alphabet[strs[i][j].charCodeAt()-97]+=1;   
-        //}
-        var sorted_text=strs[i].split("").sort().join("");
-        //console.log("sorted_text :"+sorted_text);
-        //console.log([...map1.entries()]);
+        const alphabet = Array(26).fill(0);      
+        var sorted_text=strs[i].split("").sort().join("");       
         if(map1.has( sorted_text)){
             var trr=map1.get(sorted_text).toString().split(",");            
             trr.push(strs[i]);
