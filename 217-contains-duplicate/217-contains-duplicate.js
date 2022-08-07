@@ -1,4 +1,4 @@
-/* Using Sort and checking next array element */
+/* Using Sort and checking next array element which can execute in n Log n  execution speed and space complexity of o(1)*/
 var containsDuplicate = function(nums) {
   
    nums.sort(function(a, b){return a - b});
@@ -12,7 +12,7 @@ var containsDuplicate = function(nums) {
     
    
 };
-/* Using Map */
+/* Using Map  which Order of execution of O(n) and space complexity of O(n)*/
 /*var containsDuplicate = function(nums) {
     const map1= new Map();
     for(var i=0;i<nums.length;i++){
