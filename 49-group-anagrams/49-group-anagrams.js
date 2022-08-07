@@ -8,10 +8,8 @@ var groupAnagrams = function(strs) {
         return [[""]];
     }else if(strs.length==1){
         return [[strs[0]]];
-    }
-    
-    for(var i=0;i<strs.length;i++){
-        const alphabet = Array(26).fill(0);      
+    }    
+    for(var i=0;i<strs.length;i++){              
         var sorted_text=strs[i].split("").sort().join("");       
         if(map1.has( sorted_text)){
             var trr=map1.get(sorted_text).toString().split(",");            
