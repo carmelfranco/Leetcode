@@ -16,8 +16,8 @@ var topKFrequent = function(nums, k) {
         }
     }
     
-    map1 = new Map([...map1.entries()].sort((a, b) => b[1] - a[1]));
-    
+    //map1 = new Map([...map1.entries()].sort((a, b) => b[1] - a[1]));
+    map1 = new Map([...map1.entries()].sort(function (a, b) { return b[1] - a[1]}));
     var i=0;
     var result=[];
     for (let [key,value] of map1){
