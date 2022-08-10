@@ -3,7 +3,7 @@
  * @return {number[]}
  */
 
-/* Solution 1 - Time complexity O(n)**2 Space complexity O(n)
+/* Solution 1 - Time complexity O(n)**2 Space complexity O(1)
 var productExceptSelf = function(nums) {
     let res=Array(nums.length);
    for(let i=0;i<nums.length;i++){
