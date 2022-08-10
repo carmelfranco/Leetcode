@@ -44,7 +44,7 @@ var productExceptSelf = function(nums) {
 };*/
 
 
-/* Solution 3 -Time Complexity O(n) Space complexity O(n)*/
+/* Solution 3 -Time Complexity O(n) Space complexity O(1)*/
 var productExceptSelf = function(nums) {
    let res=Array(nums.length).fill(1);
    let prefix=1;
