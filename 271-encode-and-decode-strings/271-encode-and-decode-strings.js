@@ -25,7 +25,7 @@ var decode = function(s) {
     while(i<s.length){
         var j=i;
         while(s[j]!="#"){
-            j++;
+            j++
         }
         var slen=Number(s.substring(i,j));
         res.push(s.substring(j+1,j+1+slen));
