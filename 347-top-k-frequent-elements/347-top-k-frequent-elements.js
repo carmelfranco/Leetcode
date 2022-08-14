@@ -8,7 +8,8 @@ var topKFrequent = function(nums, k) {
         return nums;
     }
     let map1= new Map();
-    for(var i=0;i<nums.length;i++){
+    
+    for(let i=0;i<nums.length;i++){
         if(map1.has(nums[i])){
             map1.set(nums[i],map1.get(nums[i])+1);
         }else{
@@ -16,18 +17,31 @@ var topKFrequent = function(nums, k) {
         }
     }
     
-    //map1 = new Map([...map1.entries()].sort((a, b) => b[1] - a[1]));
-    map1 = new Map([...map1.entries()].sort(function (a, b) { return b[1] - a[1]}));
-    var i=0;
-    var result=[];
-    for (let [key,value] of map1){
-        if(i>=k){
-            return result;
+   
+   
+    let buckets=[];
+    
+    for(let [key,value] of map1){
+        if(buckets[value]){
+            buckets[value].push(key);
         }else{
-            result.push(key);
-            i++;
+            buckets[value]=[];
+            buckets[value].push(key);
+        }
+    }
+   
+    var ans=[];
+   
+    for(let i=buckets.length-1;i>0 && ans.length<k;i--){
+        if(buckets[i]!=null){
+            for( let j=0;j<buckets[i].length;j++){
+                ans.push(buckets[i][j]);
+            }
+            
         }
         
     }
-    return result;
+    
+   
+    return ans;
 };
