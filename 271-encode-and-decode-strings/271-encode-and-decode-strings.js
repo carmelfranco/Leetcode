@@ -5,8 +5,9 @@
  * @return {string}
  */
 var encode = function(strs) {
-    var res="";
-    for(var i=0;i<strs.length;i++){
+    let res="";
+    
+    for(let i=0;i<strs.length;i++){
         res+=strs[i].length+"#"+strs[i];
     }
     
@@ -20,16 +21,16 @@ var encode = function(strs) {
  * @return {string[]}
  */
 var decode = function(s) {
-    var i=0;
+    let i=0;
     var res=[];
     while(i<s.length){
-        var j=i;
+        let j=i;
         while(s[j]!="#"){
-            j++
+            j++;
         }
-        var slen=Number(s.substring(i,j));
-        res.push(s.substring(j+1,j+1+slen));
-        i=j+1+slen;
+        let slen=Number(s.substring(i,j));
+        res.push(s.substring(j+1,slen+j+1));
+        i=slen+j+1;
     }
     
     return res;
