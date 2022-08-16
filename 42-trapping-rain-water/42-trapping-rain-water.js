@@ -21,7 +21,7 @@ var trap = function(height) {
     
     return res;
 };*/
-
+/* Time Complexity O(n), space complexity O(1) */
 var trap = function(height) {
     let leftmax=height[0];
     let rightmax=height[height.length-1];
