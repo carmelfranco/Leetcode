@@ -4,7 +4,7 @@
  * @return {boolean}
  */
 
-/* Time Complexity O(n*m) , space complexity O(n) */
+/* Time Complexity O(n*m) , space complexity O(n) 
 const equals=(a,b)=> JSON.stringify(a)===JSON.stringify(b);
 
 var checkInclusion = function(s1, s2) {
@@ -30,4 +30,49 @@ var checkInclusion = function(s1, s2) {
     }
     
     return false;
-};
+};*/
+
+/* Time Complexity O(n) , space complexity O(n) */
+
+var checkInclusion = function(s1, s2) {
+    if(s1.length>s2.length){
+        return false;
+    }
+    let s1arr=Array(26).fill(0);
+    let s2arr=Array(26).fill(0);
+    
+    for(let i=0;i<s1.length;i++){
+        s1arr[s1[i].charCodeAt()-97]++;
+        s2arr[s2[i].charCodeAt()-97]++;
+    }
+    let matches=0;
+    for(let i=0;i<26;i++){
+        if(s1arr[i]==s2arr[i]){
+            matches++;
+        }
+    }
+    let k=0;
+    for(let j=s1.length;j<s2.length;j++){
+        if(matches==26){
+            return true;
+        }
+        let index=s2[j].charCodeAt()-97;
+        s2arr[index]++;
+        if(s1arr[index]==s2arr[index]){
+            matches++;
+        }else if(s1arr[index]+1==s2arr[index]){
+            matches--;
+        }
+        
+        index=s2[k].charCodeAt()-97;
+        s2arr[index]--;
+        if(s1arr[index]==s2arr[index]){
+            matches++;
+        }else if(s1arr[index]-1==s2arr[index]){
+            matches--;
+        }
+        k++;
+    }
+    
+    return matches==26;
+}
