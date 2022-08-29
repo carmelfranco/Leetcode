@@ -10,12 +10,12 @@ var characterReplacement = function(s, k) {
         let char=s[right];
         chars[char]=1+(chars[char]||0);
         maxf=Math.max(maxf,chars[char]);
+        
         while((right-left+1)-maxf>k){
             chars[s[left]]--;
             left++;
         }
         res=Math.max(res,right-left+1);
     }
-    
     return res;
 };
