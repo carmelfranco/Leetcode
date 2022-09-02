@@ -2,7 +2,8 @@
  * @param {number} n
  * @return {string[]}
  */
-const isValid=(str)=>{
+// Time Complexity 2 Pow n *2, space complexity 2 Pow n
+/*const isValid=(str)=>{
     const stack=[];
     let i=0;
     let len=str.length;
@@ -48,4 +49,39 @@ var generateParenthesis = function(n) {
     dfs(0,n,[]);
     
     return result;
-};
+};*/
+var generateParenthesis = function(n) {
+
+    let result=[];
+    
+    // depth first search
+    dfs=(i,n,slate,ocount,ccount)=>{
+        if(ccount>ocount || ocount>n){
+            return;
+        }
+        
+        if(i==n*2){
+            result.push(slate.join(""));
+            return;
+        }
+        
+        // recursive case
+        
+        // adding Left parenthesis
+        
+        slate.push("(");
+        dfs(i+1,n,slate,ocount+1,ccount);
+        slate.pop();
+        
+        //adding right parenthesis
+        
+        slate.push(")");
+        dfs(i+1,n,slate,ocount,ccount+1);
+        slate.pop();
+    }
+    
+    dfs(0,n,[],0,0);
+    
+    return result;
+
+}
