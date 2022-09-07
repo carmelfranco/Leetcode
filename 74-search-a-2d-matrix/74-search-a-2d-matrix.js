@@ -20,7 +20,7 @@
     }
     return false;
 };*/
-
+// Time Complexity O(log n+log m), Space complexity O(1)
 var searchMatrix = function(matrix, target) {
     let left=0, right=matrix[0].length-1;
     let top=0, bot=matrix.length-1;
