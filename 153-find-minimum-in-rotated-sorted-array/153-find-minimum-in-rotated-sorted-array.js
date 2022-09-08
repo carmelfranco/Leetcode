@@ -19,9 +19,9 @@ var findMin = function(nums) {
         }
         let mid=Math.trunc((i+j)/2);
         res=Math.min(res,nums[mid]);
-        if(nums[i]<=nums[mid]){
+        if(nums[i]<=nums[mid]){//  right portion
             i=mid+1;
-        }else{
+        }else{ // left portion
             j=mid-1;
         }
     }
