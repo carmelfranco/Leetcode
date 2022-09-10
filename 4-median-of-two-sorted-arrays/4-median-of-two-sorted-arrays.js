@@ -18,6 +18,8 @@
     
     return median;
 };*/
+
+// Time Complexity O(m+n), space complexity O(1)
 var findMedianSortedArrays = function(nums1, nums2) {
 
     let total=nums1.length+nums2.length;
