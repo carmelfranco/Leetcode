@@ -65,6 +65,7 @@
 
     return median;
 }*/
+// Time Complexity O ( log m+Log n), Space Complexity O(1)
 var findMedianSortedArrays = function(nums1, nums2) {
     if(nums1.length>nums2.length){
         nums1,nums2=nums2,nums1;
