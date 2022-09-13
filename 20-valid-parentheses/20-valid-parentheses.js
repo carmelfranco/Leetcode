@@ -4,17 +4,15 @@
  */
 var isValid = function(s) {
     let stack=[];
-    let closetoopen={")":"(","}":"{","]":"["};
-    
-    for( c of s){
-        if(closetoopen[c]){
-            if(stack.length && stack[stack.length-1] ==closetoopen[c]){
+    for(char of s){
+        stack.push(char);
+        if(stack.length>=2){
+             let open=stack[stack.length-2], close=stack[stack.length-1];
+             let br=open+close;
+            if(br=="()" || br=="{}" || br=="[]"){
                 stack.pop();
-            }else{
-                return false;
+                stack.pop();
             }
-        }else{
-            stack.push(c);
         }
     }
     
