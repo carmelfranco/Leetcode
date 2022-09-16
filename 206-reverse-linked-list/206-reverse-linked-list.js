@@ -21,7 +21,7 @@
     
     return prev;
 };*/
-// Reverse List
+// Time Complexity O(n), space complexity O(n)
 var reverseList = function(head) {
 
     if(!head){
