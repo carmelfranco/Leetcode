@@ -9,7 +9,8 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-var reverseList = function(head) {
+// Time Complexity O(n), space complexity O(1)
+/*var reverseList = function(head) {
     let prev=null, curr=head;
     while(curr){
         let nxt=curr.next;
@@ -19,4 +20,20 @@ var reverseList = function(head) {
     }
     
     return prev;
-};
+};*/
+// Reverse List
+var reverseList = function(head) {
+
+    if(!head){
+        return null;
+    }
+    
+    let newhead=head;
+    if(head.next){
+        newhead=reverseList(head.next);
+        head.next.next=head;
+    }
+    head.next=null;
+    
+    return newhead;
+}
