@@ -11,7 +11,7 @@
  * @return {boolean}
  */
 // Time Complexity O(n), space complexity O(n)
-var hasCycle = function(head) {
+/*var hasCycle = function(head) {
     let map1= new Map();
     while(head){
         if(map1.has(head)){
@@ -22,4 +22,19 @@ var hasCycle = function(head) {
     }
     
     return false;
-};
+};*/
+
+// Time Complexity O(n), space complexity O(n)
+var hasCycle = function(head) {
+    let slow=head,fast =head;
+    while(fast && fast.next){
+        slow = slow.next;
+        fast = fast.next.next;
+        
+        if(slow==fast){
+            return true;
+        }
+    }
+    
+    return false;
+}
