@@ -24,7 +24,7 @@
     return false;
 };*/
 
-// Time Complexity O(n), space complexity O(n)
+// Time Complexity O(n), space complexity O(1)
 var hasCycle = function(head) {
     let slow=head,fast =head;
     while(fast && fast.next){
