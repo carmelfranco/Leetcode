@@ -10,6 +10,7 @@
  * @param {ListNode} l2
  * @return {ListNode}
  */
+// Time Complexity O(m+n)
 var addTwoNumbers = function(l1, l2) {
     let dummy= new ListNode();
     let curr=dummy;
@@ -21,8 +22,8 @@ var addTwoNumbers = function(l1, l2) {
         let val = v1+v2+carry;
         carry = Math.floor(val/10);
         val = val % 10;
-        // setting the pointers
         curr.next=new ListNode(val);
+        // setting the pointers        
         curr=curr.next;
         l1=l1!=null? l1.next : null;
         l2=l2!=null? l2.next : null;
