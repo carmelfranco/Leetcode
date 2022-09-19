@@ -10,7 +10,7 @@
  * @return {ListNode}
  */
 var mergeKLists = function(lists) {
-    console.log(JSON.stringify(lists));
+   
     let r1=[],i=0;
     while(i<lists.length){
         let curr=lists[i];
