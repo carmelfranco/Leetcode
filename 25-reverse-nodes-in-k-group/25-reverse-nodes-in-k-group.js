@@ -10,6 +10,8 @@
  * @param {number} k
  * @return {ListNode}
  */
+
+// Time Complexity O(n), space complexity O(1)
 var reverseKGroup = function(head, k) {
     let dummy=new ListNode(0,head);
     let groupprev=dummy;
