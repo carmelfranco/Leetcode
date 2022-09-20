@@ -14,8 +14,7 @@ var mergeKLists = function(lists) {
     let r1=[],i=0;
     while(i<lists.length){
         let curr=lists[i];
-        while(curr){
-            console.log(curr.val);
+        while(curr){           
             r1.push(curr.val);
             curr=curr.next;
         }
