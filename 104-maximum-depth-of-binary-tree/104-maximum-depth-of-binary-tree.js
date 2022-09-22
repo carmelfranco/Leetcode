@@ -18,7 +18,7 @@
     return 1+Math.max(maxDepth(root.left),maxDepth(root.right));
 };*/
 //non recursive BFS--> Time Complexity O(n), space complexity O(n)
-var maxDepth = function(root) {
+/*var maxDepth = function(root) {
     if(!root){
         return 0;
     }
@@ -35,4 +35,23 @@ var maxDepth = function(root) {
     }
     
     return level;
+}*/
+
+// non -recursive, in order-DFS, Time Complexity O(n), space complexity O(n) 
+var maxDepth = function(root) {
+    let level=0;
+    let stack=[{"node":root,"depth":1}];
+    while(stack.length){
+        let obj=stack.pop();
+        let node=obj.node;
+        let depth=obj.depth;          
+        if(node){
+            level=Math.max(level,depth);
+            stack.push({"node":node.left,"depth":depth+1});
+            stack.push({"node":node.right,"depth":depth+1});
+        }
+        
+    }    
+    return level;
 }
+
