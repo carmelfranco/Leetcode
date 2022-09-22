@@ -10,10 +10,29 @@
  * @param {TreeNode} root
  * @return {number}
  */
-// time Complexity O(n), space complexity O(n)
-var maxDepth = function(root) {
+// Recursive DFS-->time Complexity O(n), space complexity O(n)
+/*var maxDepth = function(root) {
     //base case
     if(!root) return 0;    
     // current node + Maximum of the Left sub tree or Right sub tree
     return 1+Math.max(maxDepth(root.left),maxDepth(root.right));
-};
+};*/
+//non recursive BFS--> Time Complexity O(n), space complexity O(n)
+var maxDepth = function(root) {
+    if(!root){
+        return 0;
+    }
+    let q=[root];
+    let level=0;
+    while(q.length){
+        let len=q.length;
+        level++;
+        while(len--){
+            let node=q.shift();
+            if(node.left) q.push(node.left);
+            if(node.right) q.push(node.right);
+        }
+    }
+    
+    return level;
+}
