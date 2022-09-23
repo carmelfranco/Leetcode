@@ -19,7 +19,7 @@
     return 1+Math.max(maxDepth(root.left),maxDepth(root.right));
 };*/
 // iterative BFS , T- O(n), S- O(n)
-var maxDepth = function(root) {
+/*var maxDepth = function(root) {
     if(!root){
         return 0;
     }
@@ -40,4 +40,20 @@ var maxDepth = function(root) {
     }
     
     return level;// return the level
+}*/
+// interative DFS, T- O(n), S- O(n)
+var maxDepth = function(root) {    
+    let stack=[{"node":root,"depth":1}], level =0;    // Set the stack with the current initial depth of 1
+    while(stack.length){ // Loop until the stack length
+        let obj=stack.pop(); //  get and remove the last element in the array
+        let node=obj.node; 
+        let depth = obj.depth;        
+        if(node){ // if the node is valid
+            level=Math.max(level,depth); // take the maximum of depth values
+            stack.push({"node":node.left,"depth":depth+1}); // Push Left node into the stack
+            stack.push({"node":node.right,"depth":depth+1}); // Push right node into the stack
+        }
+    }
+    
+    return level;
 }
