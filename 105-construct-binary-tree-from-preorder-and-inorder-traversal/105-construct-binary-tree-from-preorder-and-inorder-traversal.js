@@ -12,7 +12,7 @@
  * @return {TreeNode}
  */
 // T-O(n), space complexity(n*n)
-var buildTree = function(preorder, inorder) {
+/*var buildTree = function(preorder, inorder) {
     if(preorder.length==0 || inorder.length==0) return null;
     
     let root=new TreeNode(preorder[0]);
@@ -22,4 +22,28 @@ var buildTree = function(preorder, inorder) {
     
     return root;
     
-};
+};*/
+/* time Complexity - O(n), space complexity O(n)*/
+var buildTree = function(preorder, inorder) {
+    if (inorder.length === 0) {
+        return null;
+    }
+    const inorderMap = {};
+    let curPreIdx = 0;
+    for(let i = 0; i < inorder.length; i++) {
+        inorderMap[inorder[i]] = i;
+    }
+    function dfs(i, j) {
+        const node = new TreeNode(preorder[curPreIdx]);
+        const curInIdx = inorderMap[preorder[curPreIdx]];
+        curPreIdx++;
+        if (i <= curInIdx - 1) {
+            node.left = dfs(i, curInIdx - 1);
+        }
+        if (curInIdx + 1 <= j) {
+            node.right = dfs(curInIdx + 1, j);
+        }
+        return node;
+    }
+    return dfs(0, preorder.length - 1);
+}
