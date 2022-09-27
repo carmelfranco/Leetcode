@@ -40,14 +40,14 @@ WordDictionary.prototype.search = function(word) {
         }
         // recursive case
         if(str[i]==="."){ //  if the characte found is . then interate through all children
-            for(let key in node.children){
+            for(let key in node.children){ // Iterate through all Children
                 helper(node.children[key],str,i+1);
                 if(result){
                     return true;
                 }
             }
         }else{ // characters from a-z
-            if(node.children[str[i]]){
+            if(node.children[str[i]]){ // just check that exact children
                  helper(node.children[str[i]],str,i+1);
             }           
         }
