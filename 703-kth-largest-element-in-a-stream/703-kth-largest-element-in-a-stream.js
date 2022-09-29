@@ -17,10 +17,8 @@ var KthLargest = function(k, nums) {
  */
 KthLargest.prototype.add = function(val) {
     this.list.push(val);
-    this.list.sort((a,b)=>(a-b));
-    let k=this.k;
-    if(k<1) k=1;
-    return this.list[this.list.length-k];
+    this.list.sort((a,b)=>(a-b));   
+    return this.list[this.list.length-this.k];
 };
 
 /** 
