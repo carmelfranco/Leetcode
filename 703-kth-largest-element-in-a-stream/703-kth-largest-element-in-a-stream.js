@@ -2,13 +2,36 @@
  * @param {number} k
  * @param {number[]} nums
  */
+class PriorityQueue{
+    constructor(){
+        this.q=[];
+        this.len=0;
+    }
+    get(ind){
+        return this.q[ind];
+    }
+    shift(){
+        this.len--;
+        if(this.q.length){
+            return this.q.shift();
+        }
+    }
+    add(val){
+        this.len++;
+        this.q.push(val);
+        this.q.sort((a,b)=>(a-b));
+    }
+}
 var KthLargest = function(k, nums) {
+    
     this.k=k;
-    this.list=[];
-    
-    nums.sort((a,b)=>(a-b));
-    this.list=nums;
-    
+    this.pq = new PriorityQueue();
+    for(let i=0;i<nums.length;i++){
+        this.pq.add(nums[i]);
+        if(this.pq.len>k){
+            this.pq.shift();
+        }
+    }    
 };
 
 /** 
@@ -16,9 +39,13 @@ var KthLargest = function(k, nums) {
  * @return {number}
  */
 KthLargest.prototype.add = function(val) {
-    this.list.push(val);
-    this.list.sort((a,b)=>(a-b));   
-    return this.list[this.list.length-this.k];
+    this.pq.add(val);
+    if(this.pq.len>this.k){
+        this.pq.shift();
+        return this.pq.get(0);
+    }
+    
+    return this.pq.get(0);
 };
 
 /** 
