@@ -32,5 +32,5 @@ var lastStoneWeight = function(stones) {
         if(ele1-ele2!=0) pq.add(Math.abs(ele1-ele2)); // if there are any different values, then return the Abs difference
     }
     
-    return pq.len==0?0:pq.shift();// if there are no elements, retirn 0, otherwise return the top element
+    return pq.len==0?0:pq.shift();// if there are no elements, return 0, otherwise return the top element
 };
