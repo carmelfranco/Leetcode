@@ -5,12 +5,11 @@
  * @return {string}
  */
 var encode = function(strs) {
-    let res="";
-    for(let s of strs){
-        res+=s.length+"#"+s;
+    let result="";
+    for(s of strs){
+        result+=s.length+"#"+s;
     }
-    
-    return res;
+    return result;
 };
 
 /**
@@ -20,21 +19,17 @@ var encode = function(strs) {
  * @return {string[]}
  */
 var decode = function(s) {
-    let i=0;
     let result=[];
-    
+    let i=0;
     while(i<s.length){
         let j=i;
-        
         while(s[j]!="#"){
             j++;
         }
         let len=Number(s.substring(i,j));
-        let str=s.substring(j+1,j+1+len);
-        result.push(str);
-        i=j+1+len;
+        result.push(s.substring(j+1,j+1+len));
+        i = j+1+len;
     }
-    
     return result;
 };
 
