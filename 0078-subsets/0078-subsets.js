@@ -6,7 +6,7 @@ var subsets = function(nums) {
     let res=[],subset=[];
     const dfs=(i)=>{
         if(i>=nums.length){ //Base Case
-            let cpy = [...subset];
+            let cpy = JSON.parse(JSON.stringify(subset));
             res.push(cpy);
             return;
         }
