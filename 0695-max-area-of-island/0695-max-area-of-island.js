@@ -2,6 +2,7 @@
  * @param {number[][]} grid
  * @return {number}
  */
+//- T-O(m*n), S-O(n)
 var maxAreaOfIsland = function(grid) {
     let ROWS=grid.length, COLS=grid[0].length;
     let visit = new Set(), maxarea=0;
