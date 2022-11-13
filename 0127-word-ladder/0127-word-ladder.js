@@ -1,42 +1,42 @@
- var ladderLength = function(beginWord, endWord, wordList) {
-    const [ queue, wordSet, seen ] = [ new Queue([[ beginWord, 1 ]]), new Set(wordList), new Set([ beginWord ]) ];
+// Time - O(n*m) , S - O(n*m)
+var ladderLength = function(beginWord, endWord, wordList) {
+  var wordSet = new Set(wordList);
+  var queue = [];
+  var step = 0;
+  var word = '';
+  var len = 0;
+  var i = 0;
 
-    return bfs(queue, wordSet, seen, endWord);/* Time O(ROWS * COLS) | Space O(ROWS * COLS) */
+  pushNextWord(beginWord, queue, wordSet);
+  step = 2;
+
+  while (len = queue.length) {
+    for (i = 0; i < len; i++) {
+      word = queue.shift();
+      if (word === endWord) return step;
+      pushNextWord(word, queue, wordSet);
+    }
+    step++;
+  }
+
+  return 0;
 };
 
-const bfs = (queue, wordSet, seen, endWord) => {
-    while (!queue.isEmpty()) {
-        for (let i = (queue.size() - 1); 0 <= i; i--) {
-            const [ word, depth ] = queue.dequeue();
+var pushNextWord = function (word, queue, wordSet) {
+  var start = 'a'.charCodeAt(0);
+  var len = word.length;
+  var str = '';
 
-            const isTarget = word === endWord
-            if (isTarget) return depth
+  wordSet.delete(word);
 
-            transform(queue, wordSet, seen, word, depth)
-        }
+  for (var i = 0; i < len; i++) {
+    for (var j = 0; j < 26; j++) {
+      str = word.substr(0, i) + String.fromCharCode(j + start) + word.substr(i + 1);
+
+      if (wordSet.has(str)) {
+        queue.push(str);
+        wordSet.delete(str);
+      }
     }
-
-    return 0
-}
-
-const transform = (queue, wordSet, seen, word, depth) => {
-    for (const index in word) {
-        for (const char of 'abcdefghijklmnopqrstuvwxyz') {
-            const neighbor = getNeighbor(word, index, char);
-
-            const hasSeen = !wordSet.has(neighbor) || seen.has(neighbor);
-            if (hasSeen) continue;
-
-            queue.enqueue([ neighbor, (depth + 1) ]);
-            seen.add(neighbor);
-        }
-    }
-}
-
-const getNeighbor = (word, index, char) => {
-    const neighbor = word.split('');
-
-    neighbor[index] = char;
-
-    return neighbor.join('');
-}
+  }
+};
